@@ -138,7 +138,7 @@ fun EditableListItem(
         }
     }
 }
-//Kevin
+
 //Preview function for testing UI within the IDE
 @Preview(showBackground = true)
 @Composable
