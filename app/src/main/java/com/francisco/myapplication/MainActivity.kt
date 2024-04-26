@@ -41,7 +41,7 @@ fun MyApp() {
     var itemList by remember { mutableStateOf(List(100) { "To Do ${it + 1}" }) } // Start numbering from 1
 //the scaffold provides basic layout structure for the app
     Scaffold(
-        topBar = {
+        topBar = { //This displays the title of the App
             TopAppBar(
                 title = { Text("ToDo List") },
                 colors = TopAppBarDefaults.smallTopAppBarColors()
