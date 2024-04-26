@@ -56,18 +56,20 @@ fun MyApp() {
         ) {
             itemsIndexed(itemList.toList()) { index, itemText ->
                 var isEditing by remember { mutableStateOf(false) }
+                //Dusplays an editable or viewonly representation of each items
                 EditableListItem(
                     index = index,
                     text = itemText,
                     isEditing = isEditing,
                     onEdit = { newText ->
+                        // Updates the item texts
                         itemList = itemList.toMutableList().apply { set(index, newText) }
                         isEditing = false // Exit editing mode after saving
                     },
                     onDelete = { itemList = itemList.toMutableList().apply { removeAt(index) } },
                     onToggleEditMode = { isEditing = !isEditing }
                 )
-                Divider()
+                Divider() //Add a divider between items
             }
         }
     }
@@ -85,7 +87,7 @@ fun EditableListItem(
 ) {
     var currentText by remember { mutableStateOf(text) }
 
-    // Using Card instead of Surface for better default padding and elevation
+    // Using Card for a material design card-like appearance
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -103,6 +105,7 @@ fun EditableListItem(
             verticalAlignment = Alignment.CenterVertically // Center the items vertically
         ) {
             if (isEditing) {
+                // Disolays a Textfield for editing the item text
                 TextField(
                     value = currentText,
                     onValueChange = { newText -> currentText = newText },
@@ -122,10 +125,12 @@ fun EditableListItem(
                         .weight(1f)
                         .align(Alignment.CenterVertically) // Vertically center the Text
                 )
+                // Display an edit icon to toggle edit mode
                 IconButton(onClick = onToggleEditMode) {
                     Icon(imageVector = Icons.Default.Edit, contentDescription = "Edit")
                 }
             }
+            //Display a delete icon to delte the item
 
             IconButton(onClick = onDelete) {
                 Icon(imageVector = Icons.Default.Delete, contentDescription = "Delete")
@@ -134,6 +139,7 @@ fun EditableListItem(
     }
 }
 //Kevin
+//Preview function for testing UI within the IDE
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
