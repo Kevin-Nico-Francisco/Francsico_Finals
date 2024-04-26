@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyApplicationTheme {
+            MyApplicationTheme { //Displays the MyApp Composable
                 MyApp()
             }
         }
@@ -37,8 +37,9 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyApp() {
+    //This Mutes the state to hold the list of todo items
     var itemList by remember { mutableStateOf(List(100) { "To Do ${it + 1}" }) } // Start numbering from 1
-
+//the scaffold provides basic layout structure for the app
     Scaffold(
         topBar = {
             TopAppBar(
@@ -133,7 +134,6 @@ fun EditableListItem(
     }
 }
 //Kevin
-@RequiresApi(Build.VERSION_CODES.S)
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
