@@ -23,6 +23,7 @@ import androidx.compose.ui.Alignment
 import com.francisco.myapplication.ui.theme.MyApplicationTheme
 
 class MainActivity : ComponentActivity() {
+    @ExperimentalMaterial3Api
     @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +35,8 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+
+@ExperimentalMaterial3Api
 @Composable
 fun MyApp() {
     //This Mutes the state to hold the list of todo items
@@ -44,7 +46,6 @@ fun MyApp() {
         topBar = { //This displays the title of the App
             TopAppBar(
                 title = { Text("ToDo List") },
-                colors = TopAppBarDefaults.smallTopAppBarColors()
             )
         }
     ) { innerPadding ->
@@ -75,7 +76,7 @@ fun MyApp() {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+
 @Composable
 fun EditableListItem(
     index: Int,
@@ -139,6 +140,7 @@ fun EditableListItem(
 }
 
 //Preview function for testing UI within the IDE
+@ExperimentalMaterial3Api
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
