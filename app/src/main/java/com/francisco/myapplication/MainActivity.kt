@@ -113,7 +113,6 @@ fun EditableListItem(
                     modifier = Modifier
                         .weight(1f)
                         .padding(end = 8.dp), // Add padding at the end of the TextField
-                    colors = TextFieldDefaults.textFieldColors() // Use default Material 3 TextField colors
                 )
                 IconButton(onClick = { onEdit(currentText) }) {
                     Icon(imageVector = Icons.Default.Check, contentDescription = "Save")
